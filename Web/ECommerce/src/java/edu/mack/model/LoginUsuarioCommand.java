@@ -4,6 +4,7 @@
  */
 package edu.mack.model;
 
+
 import edu.mack.DAO.UsuarioDAOImpl;
 import edu.mack.entity.Usuario;
 import java.io.IOException;
@@ -57,5 +58,4 @@ public class LoginUsuarioCommand implements Command {
         usuarioDAO = new UsuarioDAOImpl();
         return usuarioDAO.loadUser(user);
     }
-
 }

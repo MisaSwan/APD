@@ -4,6 +4,7 @@
  */
 package edu.mack.DAO;
 
+
 import edu.mack.entity.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,6 +43,4 @@ public class UsuarioDAOImpl {
             return null;
         }
     }
-    
-    
 }
