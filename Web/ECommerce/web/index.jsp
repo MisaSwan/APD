@@ -15,8 +15,8 @@
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <link rel="stylesheet" href="assets/css/style.css"/>
     </head>
-    <body>
-    <div data-role="footer" class="nav-glyphish-example" data-theme="b">
+    <body >
+        <div data-role="footer" class="nav-glyphish-example" data-theme="b">
     <div data-role="navbar" class="nav-glyphish-example" data-grid="d">
     <ul>
         <li><a href="#" id="house" data-icon="custom">Home</a></li>
@@ -24,11 +24,15 @@
         <li><a href="#" id="beer" data-icon="custom">Parceiros</a></li>        
         <li><a href="#" id="chat" data-icon="custom">Chat</a></li>
         <li><a href="#" id="email" data-icon="custom">Email</a></li>        
-
     </ul>
     </div>
+        </div>        
+    <div class="ui-body ui-body-a ui-corner-all">
+        <div class="ui-field-contain ui-filterable">
+    <label for="search-5">Buscar produtos:</label>
+    <input type="search" name="search" id="filterBasic-input" value="" data-type="search" data-mini="true">
 </div>
-        <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+        <ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true"data-filter="true" data-input="#filterBasic-input">
     <li><a href="#">
         <img src="assets/img/galaxy.jpg">
     <h2>Broken Bells</h2>
@@ -60,11 +64,14 @@
         <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
     </li>
 </ul>
+    </div>
 <div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-    <h3>Purchase Album?</h3>
-<p>Your download will begin immediately on your mobile device when you purchase.</p>
-    <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Buy: $10.99</a>
-    <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+     <div class="ui-body ui-body-a ui-corner-all">
+<h3>Realizar a compra do produto:</h3>
+<img src="assets/img/iphone.jpg"/>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.</p>
+  </div>
 </div>
+  
     </body>
 </html>
