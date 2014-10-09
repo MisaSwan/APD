@@ -17,20 +17,20 @@ public class ItemPedido {
     private int quantity;
     private double totalPrice;
 
-    public ItemPedido(Produto product) {
+    public ItemPedido(Produto product,int quantity) {
         this.product = product;
     }
 
-    public void addProduct(int quantity) {
-        this.quantity++;
-        totalPrice += product.getPrice() * quantity;
-
-    }
-
-    public void removeProduct(int quantity) {
-        this.quantity--;
-        totalPrice -= product.getPrice() * quantity;
-    }
+//    public void addProduct(int quantity) {
+//        this.quantity++;
+//        totalPrice += product.getPrice() * quantity;
+//
+//    }
+//
+//    public void removeProduct(int quantity) {
+//        this.quantity--;
+//        totalPrice -= product.getPrice() * quantity;
+//    }
     public double getTotalPrice(){
         return totalPrice;
     }
