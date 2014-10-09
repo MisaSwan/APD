@@ -13,17 +13,18 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-
+<link rel="stylesheet" href="assets/css/style.css"/>
     </head>
     <body>
     <div data-role="footer" class="nav-glyphish-example" data-theme="b">
     <div data-role="navbar" class="nav-glyphish-example" data-grid="d">
     <ul>
+        <li><a href="#" id="house" data-icon="custom">Home</a></li>
+        <li><a href="#" id="pricetag" data-icon="custom">Produtos</a></li>
+        <li><a href="#" id="beer" data-icon="custom">Parceiros</a></li>        
         <li><a href="#" id="chat" data-icon="custom">Chat</a></li>
-        <li><a href="#" id="email" data-icon="custom">Email</a></li>
-        <li><a href="#" id="skull" data-icon="custom">Danger</a></li>
-        <li><a href="#" id="beer" data-icon="custom">Beer</a></li>
-        <li><a href="#" id="coffee" data-icon="custom">Coffee</a></li>
+        <li><a href="#" id="email" data-icon="custom">Email</a></li>        
+
     </ul>
     </div>
 </div>
