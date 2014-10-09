@@ -6,6 +6,7 @@ package edu.mack.model;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,11 +14,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 31327291
  */
-public class LogoutUsuarioCommand implements Command{
+public class LogoutUsuarioCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        
+            if (request.getCookies() != null) {
+                for (Cookie c : request.getCookies()) {
+                    if (c.getName().equals("OnlineUser")) {
+                        c.setMaxAge(0);
+                        c.setValue("--");
+                        response.addCookie(c);
+                    }
+                }
+            }         
+            request.getSession().removeAttribute("usuarioLogado");
+            response.sendRedirect("index.jsp");
+        }
     
 }

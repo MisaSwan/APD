@@ -22,6 +22,9 @@ public class Produto {
         this.image = image;
     }
 
+    public Produto(){
+        
+    }
     public String getName() {
         return name;
     }

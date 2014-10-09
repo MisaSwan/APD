@@ -4,10 +4,49 @@
  */
 package edu.mack.DAO;
 
+import edu.mack.entity.Produto;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author 31327291
  */
-public class ProdutoDAOImpl {
+public class ProdutoDAOImpl implements ProdutoDAO{
+
+    @Override
+    public List<Produto> searchProducts(String filter) {
+        try {
+            String query="";
+            if(filter.equals("") || filter == null){
+                query="";
+            }
+            else
+            {
+                query = "where productName = "+filter;
+            }
+                
+            Connection connection = UtilDAO.getConn();
+            List<Produto> productList = new ArrayList<Produto>();
+            String sql = "Select * from Products " + query;
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+                       
+            while (rs.next()) {
+                Produto product = new Produto();
+                product.setName(rs.getString("Name"));
+                product.setPrice(rs.getDouble("Price"));
+                product.setDescription(rs.getString("Description"));
+                product.setImage(rs.getString("Image"));               
+                productList.add(product);                               
+            }
+            return productList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
 }
