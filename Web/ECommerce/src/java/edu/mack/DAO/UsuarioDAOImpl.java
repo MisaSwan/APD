@@ -6,8 +6,8 @@ package edu.mack.DAO;
 
 /**
  *
- * @author 31381405
+ * @author 31327291
  */
-public class porquegitnaofunciona {
+public class UsuarioDAOImpl {
     
 }

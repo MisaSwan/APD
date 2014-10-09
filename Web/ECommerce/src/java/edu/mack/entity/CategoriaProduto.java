@@ -2,12 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mack.model;
+package edu.mack.entity;
 
 /**
  *
- * @author 31381405
+ * @author 31327291
  */
-public class porquegitehruim {
+public class CategoriaProduto {
+    
+    
+    
     
 }
