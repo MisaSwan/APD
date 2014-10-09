@@ -13,13 +13,18 @@ public class Usuario {
     private String name;
     private String login;
     private String password;
+    private boolean isLogged;
 
-    public Usuario(String name, String login, String password) {
+    public Usuario(String name, String login, String password,boolean isLogged) {
         this.name = name;
         this.login = login;
         this.password = password;
+        this.isLogged = isLogged;
     }
 
+    public Usuario(){
+        this.isLogged = false;
+    }
     public String getName() {
         return name;
     }
@@ -43,9 +48,15 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Usuario(){
-        
+
+    public boolean isIsLogged() {
+        return isLogged;
     }
+
+    public void setIsLogged(boolean isLogged) {
+        this.isLogged = isLogged;
+    }
+    
     
     
 }
