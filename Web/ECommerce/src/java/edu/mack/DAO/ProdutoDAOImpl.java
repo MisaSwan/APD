@@ -18,17 +18,16 @@ import java.util.List;
 public class ProdutoDAOImpl implements ProdutoDAO{
 
     @Override
-    public List<Produto> searchProducts(String filter) {
+    public List<Produto> searchProducts(String category,String price) {
         try {
             String query="";
-            if(filter.equals("") || filter == null){
-                query="";
+          
+            if(!category.equals("") ){
+                query = "where category like '%"+category+"%'";
             }
-            else
-            {
-                query = "where productName = "+filter;
+            if(!price.equals("") && price.equals("max")){                
+                   query += "order by price desc";
             }
-                
             Connection connection = UtilDAO.getConn();
             List<Produto> productList = new ArrayList<Produto>();
             String sql = "Select * from Products " + query;

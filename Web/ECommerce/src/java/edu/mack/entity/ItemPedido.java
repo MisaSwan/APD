@@ -21,17 +21,24 @@ public class ItemPedido {
         this.product = product;
     }
 
-//    public void addProduct(int quantity) {
-//        this.quantity++;
-//        totalPrice += product.getPrice() * quantity;
-//
-//    }
-//
-//    public void removeProduct(int quantity) {
-//        this.quantity--;
-//        totalPrice -= product.getPrice() * quantity;
-//    }
+//  
     public double getTotalPrice(){
-        return totalPrice;
+        return product.getPrice() * quantity ;
+    }
+
+    public Produto getProduct() {
+        return product;
+    }
+
+    public void setProduct(Produto product) {
+        this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

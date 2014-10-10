@@ -13,6 +13,6 @@ import java.util.List;
  */
 public interface ProdutoDAO {
  
-    public List<Produto> searchProducts(String filter);
+    public List<Produto> searchProducts(String category, String price);
     
 }

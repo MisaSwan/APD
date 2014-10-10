@@ -4,10 +4,14 @@
  */
 package edu.mack.DAO;
 
+import edu.mack.entity.Endereco;
+import edu.mack.entity.Pedido;
+
 /**
  *
  * @author 31327291
  */
 public interface CompraDAO {
     
+    public boolean logPurchase(Pedido order,String client,Endereco address);
 }

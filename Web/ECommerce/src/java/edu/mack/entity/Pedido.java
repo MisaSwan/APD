@@ -32,4 +32,20 @@ public class Pedido {
         }
 
     }
+
+    public List<ItemPedido> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<ItemPedido> cart) {
+        this.cart = cart;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

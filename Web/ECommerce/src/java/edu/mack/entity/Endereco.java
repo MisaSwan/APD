@@ -23,4 +23,9 @@ public class Endereco {
         this.addressNeighborhood = addressNeighborhood;
         this.addressCity = addressCity;
     }
+    @Override
+    public String toString(){
+    return this.addressStreet + ", "+ this.addressNumber + ", "+ this.addressCompl + ", "+
+            this.addressNeighborhood + ", "+ this.addressCity;
+    }
 }

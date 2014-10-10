@@ -34,6 +34,7 @@ public class Produto {
     }
 
     public double getPrice() {
+        //pega o name do produto e retorna a coluna Price
         return price;
     }
 
