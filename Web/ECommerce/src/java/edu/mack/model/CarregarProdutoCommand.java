@@ -4,7 +4,10 @@
  */
 package edu.mack.model;
 
+import edu.mack.DAO.ProdutoDAOImpl;
+import edu.mack.entity.Produto;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +17,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author 31327291
  */
 public class CarregarProdutoCommand implements Command{
-
+    ProdutoDAOImpl produtoDAO;
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          produtoDAO = new ProdutoDAOImpl();
+        String productName = request.getParameter("productName");        
+        Produto product = produtoDAO.loadProduct(productName);
+        request.setAttribute("productLoaded", product);
+    
     }
     
 }

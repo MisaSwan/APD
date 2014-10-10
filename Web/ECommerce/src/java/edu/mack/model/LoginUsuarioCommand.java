@@ -38,11 +38,11 @@ public class LoginUsuarioCommand implements Command {
             userToLoad.setLogin(login);
             userToLoad.setPassword(pass);
 
-            Usuario userFromDB = this.loadUser(userToLoad);
-            if (userFromDB.getLogin() != null) {
-                userFromDB.setIsLogged(true);
-                request.getSession().setAttribute("loggedUser", userFromDB);
-                Cookie c = new Cookie("OnlineUser", userFromDB.getLogin());
+            Usuario userDAO = this.loadUser(userToLoad);
+            if (userDAO.getLogin() != null) {
+                userDAO.setIsLogged(true);
+                request.getSession().setAttribute("loggedUser", userDAO);
+                Cookie c = new Cookie("OnlineUser", userDAO.getLogin());
                 response.addCookie(c);
                 response.sendRedirect("feed.jsp");
             } else {
