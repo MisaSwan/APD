@@ -47,11 +47,13 @@ public class ComprarProdutosCommand implements Command {
 
         boolean success = compraDAO.logPurchase(order, clientName(request), address);
         if (success) {
+            MetodoPagamento method;
             if (paymentMethod.equals("boleto")) {
-                response.sendRedirect("boleto.jsp");
+                method = new Boleto();                
             } else {
-                //Call Bank API   
+                method = new BancoDebito();
             }
+            method.execute(response);
         }
     }
 

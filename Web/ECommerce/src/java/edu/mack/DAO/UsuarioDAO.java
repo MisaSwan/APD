@@ -4,10 +4,13 @@
  */
 package edu.mack.DAO;
 
+import edu.mack.entity.Usuario;
+
 /**
  *
  * @author 31327291
  */
 public interface UsuarioDAO {
-    
+ 
+    public Usuario loadUser(Usuario user);
 }

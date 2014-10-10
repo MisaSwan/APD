@@ -4,10 +4,13 @@
  */
 package edu.mack.model;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author 31327291
  */
-public class MetodoPagamento {
+public interface MetodoPagamento {
     
+    public void execute( HttpServletResponse response);
 }
