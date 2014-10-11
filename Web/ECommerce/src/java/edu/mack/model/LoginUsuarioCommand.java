@@ -47,6 +47,7 @@ public class LoginUsuarioCommand implements Command {
                 response.sendRedirect("feed.jsp");
             } else {
                 msgError = "User not found";
+                request.getSession().setAttribute("ErrorLogin", msgError);
             }
         } else {
             request.getSession().setAttribute("ErrorLogin", msgError);
