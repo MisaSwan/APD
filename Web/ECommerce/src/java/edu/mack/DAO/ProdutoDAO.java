@@ -14,5 +14,5 @@ import java.util.List;
 public interface ProdutoDAO {
  
     public List<Produto> searchProducts(String category, String price);
-    
+    public Produto loadProduct(String productName);
 }

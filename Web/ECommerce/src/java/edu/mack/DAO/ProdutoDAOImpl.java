@@ -15,37 +15,61 @@ import java.util.List;
  *
  * @author 31327291
  */
-public class ProdutoDAOImpl implements ProdutoDAO{
+public class ProdutoDAOImpl implements ProdutoDAO {
 
     @Override
-    public List<Produto> searchProducts(String category,String price) {
+    public List<Produto> searchProducts(String category, String price) {
         try {
-            String query="";
-          
-            if(!category.equals("") ){
-                query = "where category like '%"+category+"%'";
+            String query = "";
+
+            if (!category.equals("")) {
+                query = "where category like '%" + category + "%'";
             }
-            if(!price.equals("") && price.equals("max")){                
-                   query += "order by price desc";
+            if (!price.equals("") && price.equals("max")) {
+                query += "order by price desc";
             }
             Connection connection = UtilDAO.getConn();
             List<Produto> productList = new ArrayList<Produto>();
             String sql = "Select * from Products " + query;
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-                       
+
             while (rs.next()) {
                 Produto product = new Produto();
                 product.setName(rs.getString("Name"));
                 product.setPrice(rs.getDouble("Price"));
                 product.setDescription(rs.getString("Description"));
-                product.setImage(rs.getString("Image"));               
-                productList.add(product);                               
+                product.setImage(rs.getString("Image"));
+                productList.add(product);
+
             }
             return productList;
         } catch (Exception e) {
             return null;
         }
     }
-    
+
+    @Override
+    public Produto loadProduct(String productName) {
+        try {            
+            if (productName.equals("")) {
+                return null;
+            }
+            Connection connection = UtilDAO.getConn();
+            String sql = "Select * from Product where productName = '" + productName + "'";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            Produto product = new Produto();
+            while (rs.next()) {
+                product.setName(rs.getString("Name"));
+                product.setPrice(rs.getDouble("Price"));
+                product.setDescription(rs.getString("Description"));
+                product.setImage(rs.getString("Image"));
+            }
+            return product;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
 }
