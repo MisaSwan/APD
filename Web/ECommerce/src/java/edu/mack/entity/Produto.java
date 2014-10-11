@@ -4,6 +4,8 @@
  */
 package edu.mack.entity;
 
+import edu.mack.DAO.ProdutoDAOImpl;
+
 /**
  *
  * @author 31327291
@@ -14,8 +16,18 @@ public class Produto {
     private double price;
     private String description;
     private String image;
+    private String category;
+    private ProdutoDAOImpl productDAO;
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Produto(String name, double price, String description, String image) {
+        productDAO = new ProdutoDAOImpl();
         this.name = name;
         this.price = price;
         this.description = description;
@@ -33,9 +45,9 @@ public class Produto {
         this.name = name;
     }
 
-    public double getPrice() {
+    public double getPrice() {        
         //pega o name do produto e retorna a coluna Price
-        return price;
+        return  productDAO.loadProduct(name).getPrice();
     }
 
     public void setPrice(double price) {
