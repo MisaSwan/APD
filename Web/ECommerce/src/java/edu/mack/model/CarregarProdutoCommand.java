@@ -16,15 +16,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 31327291
  */
-public class CarregarProdutoCommand implements Command{
+public class CarregarProdutoCommand implements Command {
+
     ProdutoDAOImpl produtoDAO;
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-          produtoDAO = new ProdutoDAOImpl();
-        String productName = request.getParameter("productName");        
+        produtoDAO = new ProdutoDAOImpl();
+        String productName = request.getParameter("productName");
         Produto product = produtoDAO.loadProduct(productName);
         request.setAttribute("productLoaded", product);
-    
+
     }
-    
+
 }
