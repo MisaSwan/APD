@@ -10,17 +10,9 @@
     <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-       <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+        <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="assets/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="assets/css/style.css"/>        
         <script type="text/javascript">
             $(document).ready(function (){
@@ -92,11 +84,15 @@
             </div>
             <div data-role="popup" id="login" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
-                    <h3>Login</h3>
-                    <input type="text" name="password" id="AddressStreet" value="" placeholder="Usuário">
-                    <input type="password" name="password" id="AddressStreet" value="" placeholder="Senha">
-                    <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2">Entrar</button>
-                    <a href="register.jsp" style="float: right">Registre-se já!</a>
+                    
+                    <form method="GET" action="/ECommerce/FrontController" data-ajax="false">
+                    <h3>Login</h3>                      
+                    <input type="text" name="usernameLogin" value="" placeholder="Usuário" required>
+                    <input type="password" name="passLogin" value="" placeholder="Senha" required>
+                    <input type="hidden" name="action" value="loginUser">
+                    <input type="submit" data-theme="b" value="Entrar">                                        
+                    Não é cadastrado? <a href="register.jsp">Registre-se aqui.</a>
+                     </form>
                 </div>
             </div>
             <div data-role="popup" id="purchase" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
