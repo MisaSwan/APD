@@ -32,7 +32,17 @@
             });         </script>
     </head>
     <body >
-        <div data-role="page" id="index" data-theme="b">    
+        <div data-role="page" id="products" data-theme="b">
+            <div data-role="panel" id="mypanel" data-display="push">
+                <ul data-role="listview">
+                    <li data-role="list-divider">Categorias</li>
+                    <li><a href="#">Smartphones</a></li>
+                    <li><a href="#">Notebooks</a></li>
+                    <li><a href="#">Brinquedos</a></li>
+                    <li><a href="#">Games</a></li>                    
+                </ul>
+
+            </div>
             <div data-role="header">
                 <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
                     <ul>
@@ -40,53 +50,50 @@
                         <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
                         <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
                     </ul>
-                </div>                 
-            </div>              
-
+                </div>    </div>    
+            <br/>
             <div data-role="main" class="ui-content">
-                <br/>
-                <div class="ui-body ui-body-b ui-corner-all">
-                    <div class="ui-field-contain ui-filterable">                    
-                        <input type="search" name="searchProduct" id="filterIndex" value="" data-type="search" placeholder="Buscar Produtos">
-                    </div>
-                    <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
-                        <li><a href="#">                            
-                                <img src="assets/img/galaxy.png"class="img-thumbnail">                        
-                                <h2>Galaxy S5</h2>
-                                <p>O melhor da Samsung no mercado.</p>
-                                <span class="ui-li-aside hidden-xs"><strong>R$ 1.800,00</strong></span></a>                   
-                            <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
-                        </li>
-                        <li><a href="#">
-                                <img src="assets/img/iphone.png"class="img-thumbnail">
-                                <h2>Iphone 4</h2>
-                                <p>O mais estável da Apple no mercado.</p>
-                                <span class="ui-li-aside hidden-xs"><strong>R$ 600,00</strong></span></a>  
-                            <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                        <li><a href="#">
-                                <img src="assets/img/lumia.png" class="img-thumbnail">
-                                <h2>Lumia 930</h2>
-                                <p>O mais novo Windows Phone, com o melhor a te oferecer.</p>
-                                <span class="ui-li-aside hidden-xs"><strong>R$ 1.200,00</strong></span></a>  
-                            <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                        <li><a href="#">
-                                <img src="assets/img/motox.png"class="img-thumbnail">
-                                <h2>Moto X</h2>
-                                <p>O melhor smartphone da Motorola.</p>
-                                <span class="ui-li-aside hidden-xs"><strong>R$ 900,00</strong></span></a>  
-                            <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                        <li><a href="#">
-                                <img src="assets/img/xperia.png" class="img-thumbnail">
-                                <h2>Xperia Z2</h2>
-                                <p>O mais completo smartphone do mercado.</p>
-                                <span class="ui-li-aside hidden-xs"><strong>R$ 2.300,00</strong></span></a> 
-                            <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                        </li>
-                    </ul>
+                <div class="ui-field-contain ui-filterable">                    
+                    <input type="search" name="searchIndex" id="filterProducts" value="" data-type="search" placeholder="Buscar Produtos">
                 </div>
+                <a class="ui-btn ui-btn-icon-left ui-icon-arrow-u-l" href="#mypanel">Categorias</a>
+                <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterProducts">
+                    <li><a href="#">                            
+                            <img src="assets/img/galaxy.png"class="img-thumbnail">                        
+                            <h2>Galaxy S5</h2>
+                            <p>O melhor da Samsung no mercado.</p>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ 1.800,00</strong></span></a>                   
+                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
+                    </li>
+                    <li><a href="#">
+                            <img src="assets/img/iphone.png"class="img-thumbnail">
+                            <h2>Iphone 4</h2>
+                            <p>O mais estável da Apple no mercado.</p>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ 600,00</strong></span></a>  
+                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
+                    </li>
+                    <li><a href="#">
+                            <img src="assets/img/lumia.png" class="img-thumbnail">
+                            <h2>Lumia 930</h2>
+                            <p>O mais novo Windows Phone, com o melhor a te oferecer.</p>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ 1.200,00</strong></span></a>  
+                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
+                    </li>
+                    <li><a href="#">
+                            <img src="assets/img/motox.png"class="img-thumbnail">
+                            <h2>Moto X</h2>
+                            <p>O melhor smartphone da Motorola.</p>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ 900,00</strong></span></a>  
+                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
+                    </li>
+                    <li><a href="#">
+                            <img src="assets/img/xperia.png" class="img-thumbnail">
+                            <h2>Xperia Z2</h2>
+                            <p>O mais completo smartphone do mercado.</p>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ 2.300,00</strong></span></a> 
+                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
+                    </li>
+                </ul>        
             </div>
             <div data-role="footer" data-position="fixed" data-fullscreen="true">
                 <h1>E-Mack</h1>
@@ -125,7 +132,7 @@
                         </div></div>
                 </div>
             </div>
-
+        </div>
     </body>
     <script type="text/javascript">
                 function buyProduct(buyer) {
