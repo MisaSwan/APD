@@ -17,19 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutUsuarioCommand implements Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-            if (request.getCookies() != null) {
-                for (Cookie c : request.getCookies()) {
-                    if (c.getName().equals("OnlineUser")) {
-                        c.setMaxAge(0);
-                        c.setValue("--");
-                        response.addCookie(c);
-                    }
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {                
+        if (request.getCookies() != null) {
+            for (Cookie c : request.getCookies()) {
+                if (c.getName().equals("OnlineUser")) {
+                    c.setMaxAge(0);
+                    c.setValue("--");
+                    response.addCookie(c);
                 }
-            }         
-            request.getSession().removeAttribute("usuarioLogado");
-            response.sendRedirect("index.jsp");
+            }
         }
-    
+     //   int contador;        
+     //   contador = Integer.parseInt((String)request.getSession().getAttribute("contador"));
+        request.getSession().removeAttribute("usuarioLogado");        
+        response.sendRedirect("index.jsp");
+    }
+
 }

@@ -10,27 +10,28 @@
     <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+              <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="assets/css/style.css"/>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="assets/css/style.css"/>        
     </head>
     <body >
         <div data-role="page" data-theme="b">
             <div data-role="header">
-                <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
+                <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
                     <ul>
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
                         <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
                         <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
+                        <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
                     </ul>
                 </div>            
             </div>            
@@ -43,8 +44,8 @@
                         <div class="col-md-3 col-sm-3"><img src="assets/img/warner.png"  style="display: block;margin: 0px auto;" width="60%" class="img-thumbnail" ><p align="center">Temos uma nova parceria com a indústria de filmes Warner Bros, que nos garante sempre exclusividade na venda de produtos relacionados aos seus filmes, e prêmiações.</p></div>
                 </div>
                 <div data-role="footer" data-position="fixed" data-fullscreen="true">
-                <h1>E-Mack</h1>
-            </div>
+                    <h1>E-Mack</h1>
+                </div>
             </div>
     </body>
 </html>

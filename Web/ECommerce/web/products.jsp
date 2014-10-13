@@ -10,18 +10,18 @@
     <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-        <link rel="stylesheet" href="assets/css/style.css"/>
+               <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="assets/css/style.css"/>        
         <script type="text/javascript">
             $(document).ready(function (){
             if (!window.location.hash) {
@@ -29,7 +29,7 @@
                     window.location.reload();
             } else{
             //Init stuff here
-            });         </script>
+            });</script>
     </head>
     <body >
         <div data-role="page" id="products" data-theme="b">
@@ -41,14 +41,14 @@
                     <li><a href="#">Brinquedos</a></li>
                     <li><a href="#">Games</a></li>                    
                 </ul>
-
             </div>
             <div data-role="header">
-                <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
+                <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
                     <ul>
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
                         <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
                         <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
+                        <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
                     </ul>
                 </div>    </div>    
             <br/>
@@ -100,8 +100,10 @@
             </div>
             <div data-role="popup" id="purchase" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
+                    <a class="ui-btn ui-btn-icon-left ui-icon-back ui-btn-inline" href="#my-header" data-rel="close" style="float:right;">Cancelar</a>
                     <h3>Realizar a compra do produto:</h3>
-                    <div>                       
+                    <div>                    
+
                         <img id="productImage" class="img-thumbnail img-responsive" width="160px" style="float: left;margin:0 20px 0px 10px;"/>
                         <h4><span id="productPrice" class="hidden-xs" style="float:right;"></span></h4>
                         <h3 id="productName"></h3>                       

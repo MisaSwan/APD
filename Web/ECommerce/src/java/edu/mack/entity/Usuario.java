@@ -6,33 +6,74 @@ package edu.mack.entity;
 
 /**
  *
- * @author 31327291
+ * @author Myer
  */
 public class Usuario {
- 
-    private String name;
+    private int id;
+    private String nome;
     private String login;
-    private String password;
+    private String senha;
+    private String email;
+    private String cpf;
 
+    public int getAge() {
+        return age;
+    }
 
-    private boolean isLogged;
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-    public Usuario(String name, String login, String password,boolean isLogged) {
-        this.name = name;
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    private String gender;
+    private int age;
+    private boolean logado;
+
+    public boolean isLogado() {
+        return logado;
+    }
+
+    public void setLogado(boolean logado) {
+        this.logado = logado;
+    }
+    
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }    
+
+    public Usuario() {
+    }
+    public Usuario(String nome, String login, String senha) {
+        this.id = id;
+        this.nome = nome;
         this.login = login;
-        this.password = password;
-        this.isLogged = isLogged;
+        this.senha = senha;
+    }
+    public int getId() {
+        return id;
     }
 
-    public Usuario(){
-        this.isLogged = false;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -43,19 +84,20 @@ public class Usuario {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public boolean isIsLogged() {
-        return isLogged;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setIsLogged(boolean isLogged) {
-        this.isLogged = isLogged;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
+
 }

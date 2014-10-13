@@ -19,7 +19,7 @@ public class UtilDAO {
     
       public static Connection getConn() throws ClassNotFoundException, SQLException{
         Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/banco", "login", "senha");
+            Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/Ecommerce", "apd", "apd");
             return connection;
         
     }

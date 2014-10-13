@@ -4,8 +4,7 @@
  */
 package edu.mack.model;
 
-
-import edu.mack.DAO.UsuarioDAOImpl;
+import edu.mack.DAO.UsuarioDaoImpl;
 import edu.mack.entity.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,10 +18,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginUsuarioCommand implements Command {
 
-    private UsuarioDAOImpl usuarioDAO;
+    UsuarioDaoImpl daoimpl = new UsuarioDaoImpl();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int contador;
+        //contador = Integer.parseInt((String)request.getSession().getAttribute("contador"));
+        //request.getSession().setAttribute("contador", contador++);        
+
         String login = request.getParameter("usernameLogin");
         String pass = request.getParameter("passLogin");
         String msgError = "";
@@ -36,27 +39,24 @@ public class LoginUsuarioCommand implements Command {
         if (!hasError) {
             Usuario userToLoad = new Usuario();
             userToLoad.setLogin(login);
-            userToLoad.setPassword(pass);
-
-            Usuario userDAO = this.loadUser(userToLoad);
-            if (userDAO.getLogin() != null) {
-                userDAO.setIsLogged(true);
-                request.getSession().setAttribute("loggedUser", userDAO);
-                Cookie c = new Cookie("OnlineUser", userDAO.getLogin());
-                response.addCookie(c);
-                response.sendRedirect("feed.jsp");
+            userToLoad.setSenha(pass);
+            Usuario userFromDB = new Usuario();
+            userFromDB = daoimpl.obterPorLogin(userToLoad);
+            if (userFromDB.getLogin() != null) {
+                userFromDB.setLogado(true);
+                request.getSession().setAttribute("usuarioLogado", userFromDB);
+                Cookie c = new Cookie("OnlineUser", userFromDB.getLogin());
+                response.addCookie(c);                
+                response.sendRedirect("products.jsp");                
             } else {
-                msgError = "User not found";
-                request.getSession().setAttribute("ErrorLogin", msgError);
+                msgError = "Usuario não encontrado";
             }
-        } else {
-            request.getSession().setAttribute("ErrorLogin", msgError);
-            response.sendRedirect("index.jsp");
+        }else
+        {
+         request.getSession().setAttribute("ErrorLogin", msgError);
+         response.sendRedirect("index.jsp");
         }
+
     }
 
-    public Usuario loadUser(Usuario user) {
-        usuarioDAO = new UsuarioDAOImpl();
-        return usuarioDAO.loadUser(user);
-    }
 }

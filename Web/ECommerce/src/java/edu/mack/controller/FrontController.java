@@ -5,11 +5,7 @@
 package edu.mack.controller;
 
 import edu.mack.model.BuscarProdutoCommand;
-import edu.mack.model.CarregarProdutoCommand;
-import edu.mack.model.Command;
-import edu.mack.model.ComprarProdutosCommand;
-import edu.mack.model.LoginUsuarioCommand;
-import edu.mack.model.LogoutUsuarioCommand;
+import edu.mack.model.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +36,9 @@ public class FrontController extends HttpServlet {
 
         String action = request.getParameter("action");
         switch (action) {
+            case "saveUser":
+             cmd = new SalvarUsuarioCommand();
+                break;
             case "loginUser":
                 cmd = new LoginUsuarioCommand();
                 break;
