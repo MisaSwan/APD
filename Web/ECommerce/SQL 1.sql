@@ -64,5 +64,3 @@ INSERT INTO ProdutoPedido
     ,1
     ,1
 );
-
-SELECT * FROM PRODUTOPEDIDO
