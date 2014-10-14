@@ -23,23 +23,23 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             String query = "";
 
             if (!category.equals("")) {
-                query = "where category like '%" + category + "%'";
+                query = "where categoria like '%" + category + "%'";
             }
             if (!price.equals("") && price.equals("max")) {
-                query += "order by price desc";
+                query += "order by preco desc";
             }
             Connection connection = UtilDAO.getConn();
             List<Produto> productList = new ArrayList<Produto>();
-            String sql = "Select * from Products " + query;
+            String sql = "Select * from produto " + query;
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Produto product = new Produto();
-                product.setName(rs.getString("Name"));
-                product.setPrice(rs.getDouble("Price"));
-                product.setDescription(rs.getString("Description"));
-                product.setImage(rs.getString("Image"));
+                product.setName(rs.getString("nome"));
+                product.setPrice(rs.getDouble("preco"));
+                product.setDescription(rs.getString("descricao"));
+                product.setImage(rs.getString("imagem"));
                 productList.add(product);
 
             }
@@ -56,15 +56,15 @@ public class ProdutoDAOImpl implements ProdutoDAO {
                 return null;
             }
             Connection connection = UtilDAO.getConn();
-            String sql = "Select * from Product where productName = '" + productName + "'";
+            String sql = "Select * from Produto where nome = '" + productName + "'";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             Produto product = new Produto();
             while (rs.next()) {
-                product.setName(rs.getString("Name"));
-                product.setPrice(rs.getDouble("Price"));
-                product.setDescription(rs.getString("Description"));
-                product.setImage(rs.getString("Image"));
+                product.setName(rs.getString("nome"));
+                product.setPrice(rs.getDouble("preco"));
+                product.setDescription(rs.getString("descricao"));
+                product.setImage(rs.getString("imagem"));
             }
             return product;
         } catch (Exception e) {

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class Pedido {
 
+    private Endereco end;
     private List<ItemPedido> cart;
     private double totalPrice;
 
