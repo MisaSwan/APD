@@ -14,39 +14,43 @@ import java.util.List;
 public class Pedido {
 
     private Endereco end;
-    private List<ItemPedido> cart;
+//    private List<ItemPedido> cart;
+    private Produto prod;
+    private double qtdProduto;
     private double totalPrice;
 
-    public Pedido() {
-        cart = new ArrayList<ItemPedido>();
+    public Pedido(Endereco end, Produto prod, double qtdProduto, double totalPrice) {
+        this.end = end;
+        this.prod = prod;
+        this.qtdProduto = qtdProduto;
+        this.totalPrice = totalPrice;
+    }
+    
+    public Endereco getEnd() {
+        return end;
     }
 
-    public void addItemList(ItemPedido item) {
-        cart.add(item);
-        totalPrice += item.getTotalPrice();
+    public void setEnd(Endereco end) {
+        this.end = end;
     }
 
-    public void removeItemList(ItemPedido item) {
-        if (cart.contains(item)) {
-            cart.remove(item);
-            totalPrice -= item.getTotalPrice();
-        }
-
+    public Produto getProd() {
+        return prod;
     }
 
-    public List<ItemPedido> getCart() {
-        return cart;
+    public void setProd(Produto prod) {
+        this.prod = prod;
     }
 
-    public void setCart(List<ItemPedido> cart) {
-        this.cart = cart;
+    public double getQtdProduto() {
+        return qtdProduto;
+    }
+
+    public void setQtdProduto(double qtdProduto) {
+        this.qtdProduto = qtdProduto;
     }
 
     public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+        return getProd().getPrice() * getQtdProduto();
     }
 }

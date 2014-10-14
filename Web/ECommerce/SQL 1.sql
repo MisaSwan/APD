@@ -30,12 +30,14 @@ CREATE TABLE Pedido
     id         INT NOT NULL PRIMARY KEY
                GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     id_usuario INT,
+    endereco   VARCHAR(300),
     total      DOUBLE
 );
 
 INSERT INTO Pedido
 (
         id_usuario
+     ,  'xxxxx'
      ,  total
 ) VALUES
 (
@@ -47,7 +49,8 @@ CREATE TABLE ProdutoPedido
 (
     id          INT NOT NULL PRIMARY KEY
                 GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    id_produto  INT,
+    nome_produto  VARCHAR(300),
+    preco_produto DOUBLE,
     qtd_produto DOUBLE,
     id_pedido   INT
 );
