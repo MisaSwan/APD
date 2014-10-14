@@ -50,23 +50,22 @@ public class ProdutoDAOImpl implements ProdutoDAO {
     }
 
     @Override
-    public Produto loadProduct(String productName) {
-        try {            
-            if (productName.equals("")) {
-                return null;
-            }
+    public List<Produto> loadProducts() {
+        try {             
             Connection connection = UtilDAO.getConn();
-            String sql = "Select * from Produto where nome = '" + productName + "'";
+            String sql = "Select * from Produto";
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            Produto product = new Produto();
+            List<Produto> products = new ArrayList();
             while (rs.next()) {
+                Produto product = new Produto();
                 product.setName(rs.getString("nome"));
                 product.setPrice(rs.getDouble("preco"));
                 product.setDescription(rs.getString("descricao"));
                 product.setImage(rs.getString("imagem"));
+                products.add(product);
             }
-            return product;
+            return products;
         } catch (Exception e) {
             return null;
         }

@@ -22,10 +22,11 @@ public class CarregarProdutoCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        produtoDAO = new ProdutoDAOImpl();
-        String productName = request.getParameter("productName");
-        Produto product = produtoDAO.loadProduct(productName);
-        request.setAttribute("productLoaded", product);
+        produtoDAO = new ProdutoDAOImpl();        
+        List<Produto> products = produtoDAO.loadProducts();
+        request.setAttribute("products", products);        
+        request.setAttribute("isLoaded", "oi");
+        response.sendRedirect("index.jsp");
 
     }
 

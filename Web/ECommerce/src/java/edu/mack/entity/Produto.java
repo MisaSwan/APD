@@ -48,7 +48,7 @@ public class Produto {
 
     public double getPrice() {        
         //pega o name do produto e retorna a coluna Price
-        return  productDAO.loadProduct(name).getPrice();
+        return  price;
     }
 
     public void setPrice(double price) {
