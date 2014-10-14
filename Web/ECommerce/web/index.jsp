@@ -4,6 +4,7 @@
     Author     : 31381405
 --%>
 
+<%@page import="edu.mack.entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,15 +14,24 @@
         <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
-        <link rel="stylesheet" href="assets/css/style.css"/>        
+        <link rel="stylesheet" href="assets/css/style.css"/>      
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function (){
-            if (!window.location.hash) {
-            window.location = window.location + '#loaded';
+            $(document).ready(function() {
+                if (!window.location.hash) {
+                    window.location = window.location + '#loaded';
                     window.location.reload();
-            } else{
-            //Init stuff here
-            });</script>
+                }
+            }
+            );</script>
     </head>
     <body >
         <div data-role="page" id="index" data-theme="b">    
@@ -31,7 +41,13 @@
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
                         <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
                         <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
+                        <%if (request.getSession().getAttribute("usuarioLogado") == null) {
+                         %>           
                         <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
+                        <%}else{%>
+                        <li><a href="#popupLogout" data-rel="popup" data-transition="slideup" id="person" data-icon="custom"> <%=((Usuario)request.getSession().getAttribute("usuarioLogado")).getLogin()%></a></li>        
+                        <%}
+                        %>
                     </ul>
                 </div>                 
             </div>  
@@ -84,17 +100,23 @@
             </div>
             <div data-role="popup" id="login" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
-                    
+
                     <form method="GET" action="/ECommerce/FrontController" data-ajax="false">
-                    <h3>Login</h3>                      
-                    <input type="text" name="usernameLogin" value="" placeholder="Usuário" required>
-                    <input type="password" name="passLogin" value="" placeholder="Senha" required>
-                    <input type="hidden" name="action" value="loginUser">
-                    <input type="submit" data-theme="b" value="Entrar">                                        
-                    Não é cadastrado? <a href="register.jsp">Registre-se aqui.</a>
-                     </form>
+                        <h3>Login</h3>                      
+                        <input type="text" name="usernameLogin" value="" placeholder="Usuário" required>
+                        <input type="password" name="passLogin" value="" placeholder="Senha" required>
+                        <input type="hidden" name="action" value="loginUser">
+                        <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-theme="b">Entrar</button>                                        
+                        Não é cadastrado? <a href="register.jsp">Registre-se aqui.</a>
+                    </form>
                 </div>
-            </div>
+            </div>            
+<div data-role="popup" id="popupLogout" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+            <li data-role="list-divider">Ação..</li>
+            <li><a onclick="$('form#Logout').trigger('submit')" >Logout</a></li>
+        </ul>
+</div>
             <div data-role="popup" id="purchase" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
                     <h3>Realizar a compra do produto:</h3>
@@ -129,14 +151,17 @@
                         </div></div>
                 </div>
             </div>
+            <form  method="GET" id="Logout"  action="/ECommerce/FrontController" data-ajax="false">
+                <input type="hidden" name="action" value="logoutUser">                
+            </form>  
         </div>
     </body>
     <script type="text/javascript">
-                function buyProduct(buyer) {
+            function buyProduct(buyer) {
                 $("#productName").text($(buyer).parent().find("h2").text());
-                        $("#productDescription").text($(buyer).parent().find("p").text());
-                        $("#productPrice").text($(buyer).parent().find("span").text());
-                        $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
-                }
+                $("#productDescription").text($(buyer).parent().find("p").text());
+                $("#productPrice").text($(buyer).parent().find("span").text());
+                $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
+            }
     </script>
 </html>

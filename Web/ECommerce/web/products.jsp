@@ -4,6 +4,7 @@
     Author     : 31381405
 --%>
 
+<%@page import="edu.mack.entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,9 +28,7 @@
             if (!window.location.hash) {
             window.location = window.location + '#loaded';
                     window.location.reload();
-            } else{
-            //Init stuff here
-            });</script>
+            }});</script>
     </head>
     <body >
         <div data-role="page" id="products" data-theme="b">
@@ -48,7 +47,13 @@
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
                         <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
                         <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
+                                                <%if (request.getSession().getAttribute("usuarioLogado") == null) {
+                         %>           
                         <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
+                        <%}else{%>
+                        <li><a href="#" id="person" data-icon="custom"> <%=((Usuario)request.getSession().getAttribute("usuarioLogado")).getLogin()%></a></li>        
+                        <%}
+                        %>
                     </ul>
                 </div>    </div>    
             <br/>

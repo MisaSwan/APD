@@ -42,7 +42,7 @@ public class FrontController extends HttpServlet {
             case "loginUser":
                 cmd = new LoginUsuarioCommand();
                 break;
-            case "logoutUse":
+            case "logoutUser":
                 cmd = new LogoutUsuarioCommand();
                 break;
             case "searchProduct":

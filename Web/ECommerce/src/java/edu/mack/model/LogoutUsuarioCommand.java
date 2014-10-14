@@ -27,8 +27,7 @@ public class LogoutUsuarioCommand implements Command {
                 }
             }
         }
-     //   int contador;        
-     //   contador = Integer.parseInt((String)request.getSession().getAttribute("contador"));
+        System.out.println("teste");
         request.getSession().removeAttribute("usuarioLogado");        
         response.sendRedirect("index.jsp");
     }

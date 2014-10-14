@@ -86,7 +86,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 user.setGender(rs.getString("Gender"));
                 user.setAge(rs.getInt("Age"));
             }
-
             return user;
         } catch (Exception e) {
             e.printStackTrace();

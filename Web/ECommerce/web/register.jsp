@@ -13,7 +13,15 @@
         <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->        
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="assets/js/bootstrap.min.js"></script>    
         <link rel="stylesheet" href="assets/css/style.css"/>
         <script>
             $(document).on("pageshow", "#Register", function () {
