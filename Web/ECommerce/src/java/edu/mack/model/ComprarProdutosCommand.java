@@ -9,7 +9,9 @@ import edu.mack.entity.Endereco;
 import edu.mack.entity.ItemPedido;
 import edu.mack.entity.Pedido;
 import edu.mack.entity.Produto;
+import edu.mack.entity.Usuario;
 import java.io.IOException;
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -41,11 +43,10 @@ public class ComprarProdutosCommand implements Command {
 
         int itemQuantity = Integer.parseInt(quantity);
         ItemPedido item = new ItemPedido(product, itemQuantity);
-        Pedido order = new Pedido();
-        order.addItemList(item);
+        Pedido order = new Pedido(address, product, itemQuantity);
         compraDAO = new CompraDAOImpl();
 
-        boolean success = compraDAO.logPurchase(order, clientName(request), address);
+        boolean success = compraDAO.logPurchase(order, ((Usuario)request.getSession().getAttribute("usuarioLogado")).getId());
         if (success) {
             MetodoPagamento method;
             if (paymentMethod.equals("boleto")) {
