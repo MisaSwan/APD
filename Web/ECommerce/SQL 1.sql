@@ -29,7 +29,11 @@ INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES(
 ('assets/img/xperia.png'
 ,'Xperia Z2'
 ,'O mais completo smartphone do mercado'
-2300);
+2300),
+('assets/img/ArquivoExibir.jpeg'
+,'Notebook 2 em 1 Touch'
+,'Muito divertoso'
+,1400);
 
 INSERT INTO PRODUTO 
 (
