@@ -11,13 +11,13 @@ import edu.mack.DAO.ProdutoDAOImpl;
  * @author 31327291
  */
 public class Produto {
-    
+
     private String name;
     private double price;
     private String description;
     private String image;
     private String category;
-    private ProdutoDAOImpl productDAO;
+
     public String getCategory() {
         return category;
     }
@@ -27,17 +27,16 @@ public class Produto {
     }
 
     public Produto(String name, double price, String description, String image) {
-        productDAO = new ProdutoDAOImpl();
         this.name = name;
         this.price = price;
         this.description = description;
         this.image = image;
     }
 
-    public Produto(){
-        
+    public Produto() {
+
     }
-    
+
     public String getName() {
         return name;
     }
@@ -46,9 +45,9 @@ public class Produto {
         this.name = name;
     }
 
-    public double getPrice() {        
+    public double getPrice() {
         //pega o name do produto e retorna a coluna Price
-        return  price;
+        return price;
     }
 
     public void setPrice(double price) {
@@ -70,8 +69,5 @@ public class Produto {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    
-    
-    
+
 }
