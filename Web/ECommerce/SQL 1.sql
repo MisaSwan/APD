@@ -13,24 +13,24 @@ INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES(
 ,'assets/img/galaxy.png'
 ,'Galaxy S5'
 ,'O melhor da Samsung no mercado'
-,1800),
-('assets/img/iphone.png'
+,1800);
+INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES('assets/img/iphone.png'
 ,'Iphone 4'
 ,'O mais estável da Apple no mercado'
-,600),
-,('assets/img/lumia.png'
+,600);
+INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES('assets/img/lumia.png'
 ,'Lumia 930'
 ,'O mais novo Windows Phone, com o melhor a te oferecer'
-,1200),
-('assets/img/motox.png'
+,1200);
+INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES('assets/img/motox.png'
 ,'Moto X'
 ,'O melhor smartphone da Motorola'
-,900),
-('assets/img/xperia.png'
+,900);
+INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES('assets/img/xperia.png'
 ,'Xperia Z2'
 ,'O mais completo smartphone do mercado'
-2300),
-('assets/img/ArquivoExibir.jpeg'
+2300);
+INSERT INTO PRODUTO (imagem,nome,descricao,preco) VALUES('assets/img/ArquivoExibir.jpeg'
 ,'Notebook 2 em 1 Touch'
 ,'Muito divertoso'
 ,1400);
