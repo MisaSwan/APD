@@ -96,8 +96,10 @@
                     <h3>Realizar a compra do produto:</h3>                      
                         <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
                         <img id="productImage" class="img-thumbnail img-responsive" width="160px" style="float: left;margin:0 20px 0px 10px;"/>
-                        <h4><span id="productPrice" name="productPrice" class="hidden-xs" style="float:right;"></span></h4>
-                        <h3 id="productName" name="productName"></h3>                       
+                        <h4><span id="productPrice"  class="hidden-xs" style="float:right;"></span></h4>
+                        <input type="hidden" id="productPrice2" name="productPrice"/>
+                        <h3 id="productName" ></h3>                       
+                        <input type="hidden" id="productName2" name="productName"/>
                         <h5 id="productDescription" ></h5>
 
                         <br/>
@@ -142,8 +144,10 @@
     <script type="text/javascript">
         function buyProduct(buyer) {
             $("#productName").text($(buyer).parent().find("h2").text());
+            $("#productName2").val($(buyer).parent().find("h2").text());
             $("#productDescription").text($(buyer).parent().find("p").text());
             $("#productPrice").text($(buyer).parent().find("span").text());
+            $("#productPrice2").val($(buyer).parent().find("span").text());
             $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
         }
     </script>

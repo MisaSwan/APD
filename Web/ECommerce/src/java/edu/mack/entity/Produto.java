@@ -45,8 +45,7 @@ public class Produto {
         this.name = name;
     }
 
-    public double getPrice() {
-        //pega o name do produto e retorna a coluna Price
+    public double getPrice() {        
         return price;
     }
 

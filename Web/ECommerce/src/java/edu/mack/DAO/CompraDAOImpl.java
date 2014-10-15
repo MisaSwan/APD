@@ -38,13 +38,20 @@ public class CompraDAOImpl implements CompraDAO {
                     + "     ,  ?"
                     + "     ,  ?"
                     + "     ,  ?";
-
+            System.out.println("oi");
+            System.out.println(codUsuario);
+            System.out.println(order.getEnd().toString());
+            System.out.println(order.getProd().getName());
+            System.out.println(order.getProd().getPrice());
+            System.out.println(order.getQtdProduto());
+            System.out.println(order.getTotalPrice());
             PreparedStatement stmt = connection.prepareStatement(sql);
+
             stmt.setInt(1, codUsuario);
             stmt.setString(2, order.getEnd().toString());
             stmt.setString(3, order.getProd().getName());
             stmt.setDouble(4, order.getProd().getPrice());
-            stmt.setDouble(4, order.getQtdProduto());
+            stmt.setDouble(5, order.getQtdProduto());
             stmt.setDouble(6, order.getTotalPrice());
             stmt.executeQuery();
             

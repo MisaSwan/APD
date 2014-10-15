@@ -41,6 +41,8 @@ public class ComprarProdutosCommand implements Command {
 
         Produto product = new Produto();
         product.setName(productName);
+        System.out.println(productPrice);
+        product.setPrice(Double.parseDouble(productPrice.replace("R$", "")));
 
         int itemQuantity = Integer.parseInt(quantity);        
         Pedido order = new Pedido(address, product, itemQuantity);
@@ -52,14 +54,16 @@ public class ComprarProdutosCommand implements Command {
         }else{
             success = compraDAO.logPurchase(order, 0);
         }
+        System.out.println("teste");
         if (success) {
             MetodoPagamento method;
             if (paymentMethod.equals("boleto")) {
+                System.out.println("teste");
                 method = new Boleto();                
             } else {
                 method = new BancoDebito();
             }
-            method.execute(response);
+            method.execute(request,response);
         }
     }
 
