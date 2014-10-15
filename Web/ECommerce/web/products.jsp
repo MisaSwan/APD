@@ -35,7 +35,7 @@
     <body >
         <div data-role="page" id="products" data-theme="b">
             <div data-role="panel" id="mypanel" data-display="push">
-                 <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
+                 <ul data-role="listview">
                     <%if (((List<String>) request.getSession().getAttribute("categories")) != null) {%>                       
                     <%for (String product : (List<String>) request.getSession().getAttribute("categories")) {%>
                     <li><a href="#"><%=product%></a></li>  
