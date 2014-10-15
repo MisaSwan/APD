@@ -24,10 +24,10 @@ public class CarregarProdutoCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         produtoDAO = new ProdutoDAOImpl();        
         List<Produto> products = produtoDAO.loadProducts();
+        request.getSession().setAttribute("categories", produtoDAO.loadCategories());
         request.getSession().setAttribute("products", products);    
         String jspName = request.getParameter("jspName");
         response.sendRedirect(jspName+".jsp#&loaded");
-
     }
 
 }
