@@ -27,21 +27,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="assets/js/bootstrap.min.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                if (!window.location.hash) {
-                    window.location = window.location + '#loaded';
-                    window.location.reload();
-                } else
-                {
-                    if ($(document).find("#isLoaded").val() == "notLoaded") {
-                        $('form#LoadProducts').trigger('submit');
-                    }
 
-                }
-
-            }
-            );</script>
 
     </head>
     <body >
@@ -69,17 +55,17 @@
                     <input type="search" name="searchProduct" id="filterIndex" value="" data-type="search" placeholder="Buscar Produtos">
                 </div>
                 <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
-                    <%if (((List<Produto>) request.getSession().getAttribute("products")) != null) {%>                    
+                    <%if (((List<Produto>) request.getSession().getAttribute("products")) != null) {%>                       
                     <%for (Produto product : (List<Produto>) request.getSession().getAttribute("products")) {%>
                     <li><a href="#">                  
                             <img src="<%=product.getImage()%>"class="img-thumbnail">  
                             <h2><%=product.getName()%></h2>
                             <p><%=product.getDescription()%></p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>,00</strong></span></a>       
+                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>       
                         <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
                     </li>  
                     <%}%>
-                    <%}%> 
+                    <%}%>
                 </ul>
 
             </div>
@@ -143,13 +129,9 @@
                 <input type="hidden" name="action" value="logoutUser">                
             </form>  
             <form  method="GET" id="LoadProducts"  action="/ECommerce/FrontController" data-ajax="false">
+                <input type="hidden" name="jspName" value="index">   
                 <input type="hidden" name="action" value="loadProduct">                
             </form>  
-            <%if (request.getSession().getAttribute("isLoaded") != null) {%>
-            <input type="hidden" id="isLoaded" value="notloaded"/>            
-            <%} else {%>
-            <input type="hidden" id="isLoaded" value="loaded"/>
-            <%}%>
         </div>
     </body>
     <script type="text/javascript">
@@ -160,4 +142,8 @@
             $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
         }
     </script>
+    <script type="text/javascript">
+        if (location.hash.indexOf('&loaded') == -1) {
+            $('form#LoadProducts').trigger('submit');
+        }</script>
 </html>
