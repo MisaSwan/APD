@@ -36,11 +36,14 @@
         <div data-role="page" id="products" data-theme="b">
             <div data-role="panel" id="mypanel" data-display="push">
                  <ul data-role="listview">
-                    <%if (((List<String>) request.getSession().getAttribute("categories")) != null) {%>                       
-                    <%for (String product : (List<String>) request.getSession().getAttribute("categories")) {%>
-                    <li><a href="#"><%=product%></a></li>  
-                    <%}%>
-                    <%}%>
+                     <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
+                        <%if (((List<String>) request.getSession().getAttribute("categories")) != null) {%>                       
+                        <%for (String product : (List<String>) request.getSession().getAttribute("categories")) {%>
+                        <li><a href="#" onclick="$(this).append('<input type=\'hidden\' name=\'category\' value=\'<%=product%>\'/>');"><%=product%></a></li>  
+                        <%}%>
+                        <%}%>
+                         <input type="hidden" name="action" value="searchProduct"> 
+                    </form>
                 </ul> 
             </div>
             <div data-role="header">
@@ -150,6 +153,10 @@
                         $("#productDescription").text($(buyer).parent().find("p").text());
                         $("#productPrice").text($(buyer).parent().find("span").text());
                         $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
+                }
+                
+                function categoryFilter() {
+                    
                 }
     </script>
     <script type="text/javascript">

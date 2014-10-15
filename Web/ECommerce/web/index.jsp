@@ -52,7 +52,7 @@
 
             <div data-role="main" class="ui-content">                
                 <div class="ui-field-contain ui-filterable">                    
-                    <input type="search" name="searchProduct" id="filterIndex" value="" data-type="search" placeholder="Buscar Produtos">
+                    <input type="search" name="searchProduct" id="filterIndex" value="" data-type="search" placeholder="Buscar Produtos" >
                 </div>
                 <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
                     <%if (((List<Produto>) request.getSession().getAttribute("products")) != null) {%>                       

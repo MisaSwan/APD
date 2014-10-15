@@ -23,7 +23,7 @@ public class BuscarProdutoCommand implements Command{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         produtoDAO = new ProdutoDAOImpl();
-        String category = request.getParameter("FilterCategory");
+        String category = request.getParameter("category");
         String price = request.getParameter("FilterPrice");
         List<Produto> products = produtoDAO.searchProducts(category,price);
         request.setAttribute("productsList", products);
