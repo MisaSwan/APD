@@ -53,12 +53,10 @@ public class ComprarProdutosCommand implements Command {
              success = compraDAO.logPurchase(order, ((Usuario)request.getSession().getAttribute("usuarioLogado")).getId());
         }else{
             success = compraDAO.logPurchase(order, 0);
-        }
-        System.out.println("teste");
+        }        
         if (success) {
             MetodoPagamento method;
-            if (paymentMethod.equals("boleto")) {
-                System.out.println("teste");
+            if (paymentMethod.equals("boleto")) {                
                 method = new Boleto();                
             } else {
                 method = new BancoDebito();

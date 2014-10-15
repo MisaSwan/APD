@@ -9,11 +9,11 @@
     String especie = "";
     String quantidade = "";
 
-    if (request.getParameter("totalPrice") != null) {
-        especie = request.getParameter("totalPrice");
+    if (request.getParameter("especie") != null) {
+        especie = request.getParameter("especie");
     }
-    if (request.getParameter("quantity") != null) {
-        quantidade = request.getParameter("quantity");
+    if (request.getParameter("quantidade") != null) {
+        quantidade = request.getParameter("quantidade");
     }
 %>
 

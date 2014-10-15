@@ -19,7 +19,7 @@ public class Boleto implements MetodoPagamento{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.sendRedirect("boleto.aspx?especie="+request.getParameter("productPrice")+"&quantidade="+request.getParameter("quantity"));
+            response.sendRedirect("boleto.jsp?especie="+request.getParameter("productPrice").replace("R$", "").replace(" ","") +"&quantidade="+request.getParameter("quantity"));
         } catch (IOException ex) {
             Logger.getLogger(Boleto.class.getName()).log(Level.SEVERE, null, ex);
         }

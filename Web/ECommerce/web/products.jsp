@@ -102,36 +102,43 @@
             </div>
             <div data-role="popup" id="purchase" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
-                    <h3>Realizar a compra do produto:</h3>
-                    <div>                       
+                    <h3>Realizar a compra do produto:</h3>                      
+                        <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
                         <img id="productImage" class="img-thumbnail img-responsive" width="160px" style="float: left;margin:0 20px 0px 10px;"/>
-                        <h4><span id="productPrice" class="hidden-xs" style="float:right;"></span></h4>
-                        <h3 id="productName"></h3>                       
-                        <h5 id="productDescription"></h5>
+                        <h4><span id="productPrice"  class="hidden-xs" style="float:right;"></span></h4>
+                        <input type="hidden" id="productPrice2" name="productPrice"/>
+                        <h3 id="productName" ></h3>                       
+                        <input type="hidden" id="productName2" name="productName"/>
+                        <h5 id="productDescription" ></h5>
 
                         <br/>
                         <br/>
                         <br/>
                         <br/>
                         <br/>
+                         <input type="hidden" name="action" value="buyProduct"> 
                         <div class="col-md-7">
-                            <input type="text" name="password" id="AddressStreet" value="" placeholder="Rua"></div>
+                            <input type="text" id="AddressStreet" name="addressStreet" value="" placeholder="Rua"></div>
                         <div class="col-md-2">
-                            <input type="number" name="password" id="AddressNumber" value="" placeholder="Número">
+                            <input type="number" id="AddressNumber" name="addressNumber" value="" placeholder="Número">
                         </div>
                         <div class="col-md-3">
-                            <input type="text" name="password" id="AddressComplement" value="" placeholder="Complemento">
+                            <input type="text" id="AddressComplement" name="addressCompl" value="" placeholder="Complemento">
                         </div>
                         <div class="col-md-7">
-                            <input type="text" name="password" id="AddressNeighboorhood" value="" placeholder="Bairro">
+                            <input type="text" id="AddressNeighboorhood" name="addressNeighborhood" value="" placeholder="Bairro">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" name="password" id="AddressCity" value="" placeholder="Cidade">
-                        </div>                        <div class="col-md-6">
-                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2">Pagar com boleto</button></div>
+                            <input type="text" name="addressCity" id="AddressCity" value="" placeholder="Cidade">
+                        </div>           
+                         <div class="col-md-12">
+                             <input type="number" id="quantity" name="quantity" value="" placeholder="Quantidade"/></div>
                         <div class="col-md-6">
-                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2">Pagar com débito</button>
-                        </div></div>
+                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'boleto\'/>');">Pagar com boleto</button></div>
+                        <div class="col-md-6">
+                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/>')";>Pagar com débito</button>
+                        </div>
+                        </form>
                 </div>
             </div>
             <form  method="GET" id="Logout"  action="/ECommerce/FrontController" data-ajax="false">
