@@ -8,8 +8,11 @@ import edu.mack.entity.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -69,6 +72,25 @@ public class ProdutoDAOImpl implements ProdutoDAO {
         } catch (Exception e) {
             return null;
         }
-
+    }
+    
+    public List<String> loadCategories() {
+        List<String> listCategories = new ArrayList<>();
+        
+        try {
+            Connection conn = UtilDAO.getConn();
+            String cmd = "SELECT DISTINCT categoria FROM PRODUTO";
+            PreparedStatement ps = conn.prepareStatement(cmd);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                listCategories.add(rs.getString("categoria"));
+            }
+            
+            return listCategories;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

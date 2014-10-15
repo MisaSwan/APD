@@ -24,6 +24,7 @@ public class CarregarProdutoCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         produtoDAO = new ProdutoDAOImpl();        
         List<Produto> products = produtoDAO.loadProducts();
+        request.setAttribute("categories", produtoDAO.loadCategories());
         request.setAttribute("products", products);        
         request.setAttribute("isLoaded", "oi");
         response.sendRedirect("index.jsp");
