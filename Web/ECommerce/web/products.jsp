@@ -153,10 +153,12 @@
     </body>
     <script type="text/javascript">
                 function buyProduct(buyer) {
-                $("#productName").text($(buyer).parent().find("h2").text());
-                        $("#productDescription").text($(buyer).parent().find("p").text());
-                        $("#productPrice").text($(buyer).parent().find("span").text());
-                        $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
+                   $("#productName").text($(buyer).parent().find("h2").text());
+            $("#productName2").val($(buyer).parent().find("h2").text());
+            $("#productDescription").text($(buyer).parent().find("p").text());
+            $("#productPrice").text($(buyer).parent().find("span").text());
+            $("#productPrice2").val($(buyer).parent().find("span").text());
+            $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
                 }
     </script>
     <script type="text/javascript">
