@@ -4,6 +4,8 @@
     Author     : 31381405
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="edu.mack.entity.Produto"%>
 <%@page import="edu.mack.entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,13 +35,13 @@
     <body >
         <div data-role="page" id="products" data-theme="b">
             <div data-role="panel" id="mypanel" data-display="push">
-                <ul data-role="listview">
-                    <li data-role="list-divider">Categorias</li>
-                    <li><a href="#">Smartphones</a></li>
-                    <li><a href="#">Notebooks</a></li>
-                    <li><a href="#">Brinquedos</a></li>
-                    <li><a href="#">Games</a></li>                    
-                </ul>
+                 <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
+                    <%if (((List<String>) request.getSession().getAttribute("categories")) != null) {%>                       
+                    <%for (String product : (List<String>) request.getSession().getAttribute("categories")) {%>
+                    <li><a href="#"><%=product%></a></li>  
+                    <%}%>
+                    <%}%>
+                </ul> 
             </div>
             <div data-role="header">
                 <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
@@ -62,53 +64,46 @@
                     <input type="search" name="searchIndex" id="filterProducts" value="" data-type="search" placeholder="Buscar Produtos">
                 </div>
                 <a class="ui-btn ui-btn-icon-left ui-icon-arrow-u-l" href="#mypanel">Categorias</a>
-                <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterProducts">
-                    <li><a href="#">                            
-                            <img src="assets/img/galaxy.png"class="img-thumbnail">                        
-                            <h2>Galaxy S5</h2>
-                            <p>O melhor da Samsung no mercado.</p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ 1.800,00</strong></span></a>                   
+                                <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
+                    <%if (((List<Produto>) request.getSession().getAttribute("products")) != null) {%>                       
+                    <%for (Produto product : (List<Produto>) request.getSession().getAttribute("products")) {%>
+                    <li><a href="#">                  
+                            <img src="<%=product.getImage()%>"class="img-thumbnail">  
+                            <h2><%=product.getName()%></h2>
+                            <p><%=product.getDescription()%></p>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>       
                         <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
-                    </li>
-                    <li><a href="#">
-                            <img src="assets/img/iphone.png"class="img-thumbnail">
-                            <h2>Iphone 4</h2>
-                            <p>O mais estável da Apple no mercado.</p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ 600,00</strong></span></a>  
-                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                    </li>
-                    <li><a href="#">
-                            <img src="assets/img/lumia.png" class="img-thumbnail">
-                            <h2>Lumia 930</h2>
-                            <p>O mais novo Windows Phone, com o melhor a te oferecer.</p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ 1.200,00</strong></span></a>  
-                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                    </li>
-                    <li><a href="#">
-                            <img src="assets/img/motox.png"class="img-thumbnail">
-                            <h2>Moto X</h2>
-                            <p>O melhor smartphone da Motorola.</p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ 900,00</strong></span></a>  
-                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                    </li>
-                    <li><a href="#">
-                            <img src="assets/img/xperia.png" class="img-thumbnail">
-                            <h2>Xperia Z2</h2>
-                            <p>O mais completo smartphone do mercado.</p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ 2.300,00</strong></span></a> 
-                        <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Purchase album</a>
-                    </li>
-                </ul>        
+                    </li>  
+                    <%}%>
+                    <%}%>
+                </ul> 
             </div>
             <div data-role="footer" data-position="fixed" data-fullscreen="true">
                 <h1>E-Mack</h1>
             </div>
+             <div data-role="popup" id="login" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
+                <div class="ui-body ui-body-b ui-corner-all">
+
+                    <form method="GET" action="/ECommerce/FrontController" data-ajax="false">
+                        <h3>Login</h3>                      
+                        <input type="text" name="usernameLogin" value="" placeholder="Usuário" required>
+                        <input type="password" name="passLogin" value="" placeholder="Senha" required>
+                        <input type="hidden" name="action" value="loginUser">
+                        <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-theme="b">Entrar</button>                                        
+                        Não é cadastrado? <a href="register.jsp">Registre-se aqui.</a>
+                    </form>
+                </div>
+            </div>            
+            <div data-role="popup" id="popupLogout" data-theme="b">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                    <li data-role="list-divider">Ação..</li>
+                    <li><a onclick="$('form#Logout').trigger('submit')" >Logout</a></li>
+                </ul>
+            </div>
             <div data-role="popup" id="purchase" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
-                    <a class="ui-btn ui-btn-icon-left ui-icon-back ui-btn-inline" href="#my-header" data-rel="close" style="float:right;">Cancelar</a>
                     <h3>Realizar a compra do produto:</h3>
-                    <div>                    
-
+                    <div>                       
                         <img id="productImage" class="img-thumbnail img-responsive" width="160px" style="float: left;margin:0 20px 0px 10px;"/>
                         <h4><span id="productPrice" class="hidden-xs" style="float:right;"></span></h4>
                         <h3 id="productName"></h3>                       
@@ -139,6 +134,14 @@
                         </div></div>
                 </div>
             </div>
+            <form  method="GET" id="Logout"  action="/ECommerce/FrontController" data-ajax="false">
+                <input type="hidden" name="action" value="logoutUser">                
+            </form>  
+            <form  method="GET" id="LoadProducts"  action="/ECommerce/FrontController" data-ajax="false">
+                <input type="hidden" name="jspName" value="products">   
+                <input type="hidden" name="action" value="loadProduct">                
+            </form>                  
+            </div>
         </div>
     </body>
     <script type="text/javascript">
@@ -149,4 +152,8 @@
                         $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
                 }
     </script>
+    <script type="text/javascript">
+        if (location.hash.indexOf('&loaded') == -1) {            
+            $('form#LoadProducts').trigger('submit');
+        }</script>
 </html>
