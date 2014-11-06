@@ -15,4 +15,5 @@ public interface ProdutoDAO {
  
     public List<Produto> searchProducts(String category, String price);
     public List<Produto> loadProducts();
+    public boolean updateOrderStatus(String orderNumber, String status);
 }

@@ -54,7 +54,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 
     @Override
     public List<Produto> loadProducts() {
-        try {             
+        try {
             Connection connection = UtilDAO.getConn();
             String sql = "Select * from Produto";
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -73,24 +73,46 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             return null;
         }
     }
-    
+
     public List<String> loadCategories() {
         List<String> listCategories = new ArrayList<>();
-        
+
         try {
             Connection conn = UtilDAO.getConn();
             String cmd = "SELECT DISTINCT categoria FROM PRODUTO";
             PreparedStatement ps = conn.prepareStatement(cmd);
-            
+
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 listCategories.add(rs.getString("categoria"));
             }
-            
+
             return listCategories;
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public boolean updateOrderStatus(String orderNumber, String status) {
+
+        try {
+            Connection conn = UtilDAO.getConn();
+            if (!status.equals("OK") || !status.equals("NOK") || !status.equals("undefined")) {
+                return false;
+            }
+            String cmd = "UPDATE PEDIDO SET STATUS = ? WHERE ORDERNUMBER=?";
+            PreparedStatement stmt = conn.prepareStatement(cmd);
+
+            stmt.setString(1, orderNumber);
+            stmt.setString(2, status);
+            stmt.execute();
+            conn.commit();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+
     }
 }

@@ -33,7 +33,7 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
 
         Command cmd;
-
+        
         String action = request.getParameter("action");
         switch (action) {
             case "saveUser":
