@@ -14,4 +14,5 @@ import edu.mack.entity.Pedido;
 public interface CompraDAO {
     
     public boolean logPurchase(Pedido order, int codUsuario);
+    public boolean updateOrderStatus(String orderNumber, String status);
 }

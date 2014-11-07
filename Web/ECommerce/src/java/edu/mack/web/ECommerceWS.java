@@ -4,6 +4,7 @@
  */
 package edu.mack.web;
 
+import edu.mack.DAO.CompraDAOImpl;
 import edu.mack.DAO.ProdutoDAOImpl;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -19,7 +20,7 @@ public class ECommerceWS {
     
     @WebMethod(operationName = "updateOrderStatus")
     public void updateOrderStatus(String orderNumber,String status) throws Exception {        
-        ProdutoDAOImpl dao = new ProdutoDAOImpl();
+        CompraDAOImpl dao = new CompraDAOImpl();
         if("".equals(orderNumber))
             throw new Exception();
           if("".equals(status))

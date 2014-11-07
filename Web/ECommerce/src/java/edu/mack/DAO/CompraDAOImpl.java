@@ -49,5 +49,28 @@ public class CompraDAOImpl implements CompraDAO {
         }
 
     }
+    public boolean updateOrderStatus(String orderNumber, String status) {
+
+        try {
+            Connection conn = UtilDAO.getConn();
+            if (!status.equals("OK") && !status.equals("NOK") && !status.equals("undefined")) {
+                return false;
+            }
+            int numeroPedido = Integer.parseInt(orderNumber);
+            String cmd = "UPDATE PEDIDO SET STATUS = ? WHERE NUMERO_PEDIDO=?";
+            PreparedStatement stmt = conn.prepareStatement(cmd);
+
+            stmt.setString(1, status);
+            stmt.setInt(2, numeroPedido);
+            
+            stmt.execute();
+            conn.commit();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+
+    }
 
 }
