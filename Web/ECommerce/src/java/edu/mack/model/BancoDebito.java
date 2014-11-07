@@ -19,7 +19,10 @@ public class BancoDebito implements MetodoPagamento{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         try {      
-            response.sendRedirect("index.jsp");
+            request.getParameter("bank_name");
+            String urlParam = "orderPrice="+request.getSession().getAttribute("orderPrice")+"&orderNumber="+request.getSession().getAttribute("orderNumber");
+            
+            response.sendRedirect("http://localhost:8080/Projeto_Banco_Teste/Index.jsp?"+urlParam);
         } catch (IOException ex) {
             Logger.getLogger(BancoDebito.class.getName()).log(Level.SEVERE, null, ex);
         }

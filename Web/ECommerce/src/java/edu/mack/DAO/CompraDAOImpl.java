@@ -22,7 +22,7 @@ public class CompraDAOImpl implements CompraDAO {
         try {
             Connection connection = UtilDAO.getConn();
 
-            String sql = "INSERT INTO apd.Pedido (id_usuario,endereco,nome_produto,preco_produto,qtd_produto,total) values(?,?,?,?,?,?)";                         
+            String sql = "INSERT INTO apd.Pedido (id_usuario,endereco,nome_produto,preco_produto,qtd_produto,total,status,numero_pedido) values(?,?,?,?,?,?,?,?)";                         
             System.out.println(codUsuario);
             System.out.println(order.getEnd().toString());
             System.out.println(order.getProd().getName());
@@ -37,6 +37,8 @@ public class CompraDAOImpl implements CompraDAO {
             stmt.setDouble(4, order.getProd().getPrice());
             stmt.setDouble(5, order.getQtdProduto());
             stmt.setDouble(6, order.getTotalPrice());            
+            stmt.setString(7, "Pendente");            
+            stmt.setInt(8, order.getNumeroPedido());            
             
             stmt.execute();
             connection.commit();

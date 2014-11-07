@@ -17,11 +17,20 @@ public class Pedido {
 //    private List<ItemPedido> cart;
     private Produto prod;
     private double qtdProduto;
-
-    public Pedido(Endereco end, Produto prod, double qtdProduto) {
+    private int numeroPedido;
+    public Pedido(Endereco end, Produto prod, double qtdProduto,int numeroPedido) {
         this.end = end;
         this.prod = prod;
+        this.numeroPedido=numeroPedido;
         this.qtdProduto = qtdProduto;
+    }
+
+    public int getNumeroPedido() {
+        return numeroPedido;
+    }
+
+    public void setNumeroPedido(int numeroPedido) {
+        this.numeroPedido = numeroPedido;
     }
     
     public Endereco getEnd() {

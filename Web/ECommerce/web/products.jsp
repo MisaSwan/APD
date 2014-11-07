@@ -4,11 +4,16 @@
     Author     : 31381405
 --%>
 
+<%@page import="java.util.Random"%>
 <%@page import="java.util.List"%>
 <%@page import="edu.mack.entity.Produto"%>
 <%@page import="edu.mack.entity.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+Random ran = new Random();
+%>
 <html>
     <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -139,6 +144,7 @@
                         <div class="col-md-6">
                             <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'boleto\'/>');">Pagar com boleto</button></div>
                         <div class="col-md-6">
+                           
                             <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/>')";>Pagar com débito</button>
                         </div>
                         </form>
