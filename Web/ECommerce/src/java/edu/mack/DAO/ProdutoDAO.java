@@ -15,5 +15,7 @@ public interface ProdutoDAO {
  
     public List<Produto> searchProducts(String category, String price);
     public List<Produto> loadProducts();
-    
+    public List<Produto> filterProductsByCategory(String category);
+    public List<Produto> filterProductsByPrice(boolean minorPrice);
+    public List<Produto> filterProductsByName(String name);
 }

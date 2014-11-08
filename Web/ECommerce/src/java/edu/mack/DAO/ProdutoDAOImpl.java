@@ -94,5 +94,81 @@ public class ProdutoDAOImpl implements ProdutoDAO {
         }
     }
 
-    
+    @Override
+    public List<Produto> filterProductsByCategory(String category) {
+
+        try {
+            Connection connection = UtilDAO.getConn();
+            String sql = "Select * from Produto where categoria like '%"+category+"%'";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            List<Produto> products = new ArrayList();
+            while (rs.next()) {
+                Produto product = new Produto();
+                product.setName(rs.getString("nome"));
+                product.setPrice(rs.getDouble("preco"));
+                product.setDescription(rs.getString("descricao"));
+                product.setImage(rs.getString("imagem"));
+                products.add(product);
+            }
+            return products;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<Produto> filterProductsByPrice(boolean minorPrice) {
+        try {
+            String orderBy = "";
+            if (!minorPrice) {
+                orderBy = "order by preco desc";
+            }
+            Connection connection = UtilDAO.getConn();
+            String sql = "Select * from Produto "+orderBy;
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+            List<Produto> products = new ArrayList();
+            while (rs.next()) {
+                Produto product = new Produto();
+                product.setName(rs.getString("nome"));
+                product.setPrice(rs.getDouble("preco"));
+                product.setDescription(rs.getString("descricao"));
+                product.setImage(rs.getString("imagem"));
+                products.add(product);
+            }
+            return products;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<Produto> filterProductsByName(String name) {
+        try {
+            Connection connection = UtilDAO.getConn();
+            String sql = "Select * from Produto where nome like '%"+name+"%'";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            List<Produto> products = new ArrayList();
+            while (rs.next()) {
+                Produto product = new Produto();
+                product.setName(rs.getString("nome"));
+                product.setPrice(rs.getDouble("preco"));
+                product.setDescription(rs.getString("descricao"));
+                product.setImage(rs.getString("imagem"));
+                products.add(product);
+            }
+            return products;
+        } catch (Exception e) {
+            return null;
+        }
+        
+    }
+
 }

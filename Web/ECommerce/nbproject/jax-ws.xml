@@ -4,6 +4,9 @@
     <service name="ECommerceWS">
       <implementation-class>edu.mack.web.ECommerceWS</implementation-class>
     </service>
+    <service name="ECommerceWSBuscador">
+      <implementation-class>edu.mack.web.ECommerceWSBuscador</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>
