@@ -62,6 +62,8 @@ CREATE TABLE Pedido
     id         INT NOT NULL PRIMARY KEY
                GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     id_usuario INT,
+    status varchar(30),
+    numero_pedido varchar(30),
     endereco   VARCHAR(300),
     nome_produto  VARCHAR(300),
     preco_produto DOUBLE,

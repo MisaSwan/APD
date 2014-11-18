@@ -12,13 +12,13 @@
 <!DOCTYPE html>
 
 <%
-Random ran = new Random();
+    Random ran = new Random();
 %>
 <html>
     <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-               <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+        <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
         <!-- Latest compiled and minified CSS -->
@@ -31,23 +31,24 @@ Random ran = new Random();
         <script src="assets/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="assets/css/style.css"/>        
         <script type="text/javascript">
-            $(document).ready(function (){
-            if (!window.location.hash) {
-            window.location = window.location + '#loaded';
+            $(document).ready(function() {
+                if (!window.location.hash) {
+                    window.location = window.location + '#loaded';
                     window.location.reload();
-            }});</script>
+                }
+            });</script>
     </head>
     <body >
         <div data-role="page" id="products" data-theme="b">
             <div data-role="panel" id="mypanel" data-display="push">
-                 <ul data-role="listview">
-                     <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
+                <ul data-role="listview">
+                    <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
                         <%if (((List<String>) request.getSession().getAttribute("categories")) != null) {%>                       
                         <%for (String product : (List<String>) request.getSession().getAttribute("categories")) {%>
                         <li><a href="#" onclick="$(this).append('<input type=\'hidden\' name=\'category\' value=\'<%=product%>\'/>');"><%=product%></a></li>  
-                        <%}%>
-                        <%}%>
-                         <input type="hidden" name="action" value="searchProduct"> 
+                            <%}%>
+                            <%}%>
+                        <input type="hidden" name="action" value="searchProduct"> 
                     </form>
                 </ul> 
             </div>
@@ -57,13 +58,13 @@ Random ran = new Random();
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
                         <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
                         <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
-                                                <%if (request.getSession().getAttribute("usuarioLogado") == null) {
-                         %>           
+                            <%if (request.getSession().getAttribute("usuarioLogado") == null) {
+                            %>           
                         <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
-                        <%}else{%>
-                        <li><a href="#" id="person" data-icon="custom"> <%=((Usuario)request.getSession().getAttribute("usuarioLogado")).getLogin()%></a></li>        
-                        <%}
-                        %>
+                            <%} else {%>
+                        <li><a href="#" id="person" data-icon="custom"> <%=((Usuario) request.getSession().getAttribute("usuarioLogado")).getLogin()%></a></li>        
+                            <%}
+                            %>
                     </ul>
                 </div>    </div>    
             <br/>
@@ -72,14 +73,23 @@ Random ran = new Random();
                     <input type="search" name="searchIndex" id="filterProducts" value="" data-type="search" placeholder="Buscar Produtos">
                 </div>
                 <a class="ui-btn ui-btn-icon-left ui-icon-arrow-u-l" href="#mypanel">Categorias</a>
-                                <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
+                <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
                     <%if (((List<Produto>) request.getSession().getAttribute("products")) != null) {%>                       
                     <%for (Produto product : (List<Produto>) request.getSession().getAttribute("products")) {%>
                     <li><a href="#">                  
                             <img src="<%=product.getImage()%>"class="img-thumbnail">  
                             <h2><%=product.getName()%></h2>
                             <p><%=product.getDescription()%></p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>       
+                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>
+                        <div data-role="fieldcontain">
+                            <label for="select-choice-1" class="select">Choose shipping method:</label>
+                            <select name="select-choice-1" id="select-choice-1">
+                                <option value="standard">Standard: 7 day</option>
+                                <option value="rush">Rush: 3 days</option>
+                                <option value="express">Express: next day</option>
+                                <option value="overnight">Overnight</option>
+                            </select>
+                        </div>
                         <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
                     </li>  
                     <%}%>
@@ -89,7 +99,7 @@ Random ran = new Random();
             <div data-role="footer" data-position="fixed" data-fullscreen="true">
                 <h1>E-Mack</h1>
             </div>
-             <div data-role="popup" id="login" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
+            <div data-role="popup" id="login" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
 
                     <form method="GET" action="/ECommerce/FrontController" data-ajax="false">
@@ -111,7 +121,7 @@ Random ran = new Random();
             <div data-role="popup" id="purchase" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:700px; padding-bottom:2em;">
                 <div class="ui-body ui-body-b ui-corner-all">
                     <h3>Realizar a compra do produto:</h3>                      
-                        <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
+                    <form  method="GET"  action="/ECommerce/FrontController" data-ajax="false">
                         <img id="productImage" class="img-thumbnail img-responsive" width="160px" style="float: left;margin:0 20px 0px 10px;"/>
                         <h4><span id="productPrice"  class="hidden-xs" style="float:right;"></span></h4>
                         <input type="hidden" id="productPrice2" name="productPrice"/>
@@ -124,7 +134,7 @@ Random ran = new Random();
                         <br/>
                         <br/>
                         <br/>
-                         <input type="hidden" name="action" value="buyProduct"> 
+                        <input type="hidden" name="action" value="buyProduct"> 
                         <div class="col-md-7">
                             <input type="text" id="AddressStreet" name="addressStreet" value="" placeholder="Rua"></div>
                         <div class="col-md-2">
@@ -139,15 +149,15 @@ Random ran = new Random();
                         <div class="col-md-5">
                             <input type="text" name="addressCity" id="AddressCity" value="" placeholder="Cidade">
                         </div>           
-                         <div class="col-md-12">
-                             <input type="number" id="quantity" name="quantity" value="" placeholder="Quantidade"/></div>
+                        <div class="col-md-12">
+                            <input type="number" id="quantity" name="quantity" value="" placeholder="Quantidade"/></div>
                         <div class="col-md-6">
                             <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'boleto\'/>');">Pagar com boleto</button></div>
                         <div class="col-md-6">
-                           
+
                             <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/>')";>Pagar com débito</button>
                         </div>
-                        </form>
+                    </form>
                 </div>
             </div>
             <form  method="GET" id="Logout"  action="/ECommerce/FrontController" data-ajax="false">
@@ -157,25 +167,25 @@ Random ran = new Random();
                 <input type="hidden" name="jspName" value="products">   
                 <input type="hidden" name="action" value="loadProduct">                
             </form>                  
-            </div>
         </div>
-    </body>
-    <script type="text/javascript">
-                function buyProduct(buyer) {
-                   $("#productName").text($(buyer).parent().find("h2").text());
+    </div>
+</body>
+<script type="text/javascript">
+        function buyProduct(buyer) {
+            $("#productName").text($(buyer).parent().find("h2").text());
             $("#productName2").val($(buyer).parent().find("h2").text());
             $("#productDescription").text($(buyer).parent().find("p").text());
             $("#productPrice").text($(buyer).parent().find("span").text());
             $("#productPrice2").val($(buyer).parent().find("span").text());
             $("#productImage").attr("src", $(buyer).parent().find("img").attr("src"));
-                }
-                
-                function categoryFilter() {
-                    
-                }
-    </script>
-    <script type="text/javascript">
-        if (location.hash.indexOf('&loaded') == -1) {            
-            $('form#LoadProducts').trigger('submit');
-        }</script>
+        }
+
+        function categoryFilter() {
+
+        }
+</script>
+<script type="text/javascript">
+    if (location.hash.indexOf('&loaded') == -1) {
+        $('form#LoadProducts').trigger('submit');
+    }</script>
 </html>

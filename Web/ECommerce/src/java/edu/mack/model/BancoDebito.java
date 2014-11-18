@@ -14,23 +14,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 31327291
  */
-public class BancoDebito implements MetodoPagamento{
+public class BancoDebito implements MetodoPagamento {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        try {      
-            request.getParameter("bank_name");
-            String urlParam = "orderPrice="+request.getSession().getAttribute("orderPrice")+"&orderNumber="+request.getSession().getAttribute("orderNumber");
-            
-            response.sendRedirect("http://localhost:8080/Projeto_Banco_Teste/Index.jsp?"+urlParam);
+        try {
+            String bankOption = request.getParameter("bank_option");
+            String urlParam = "orderPrice=" + request.getSession().getAttribute("orderPrice") + "&orderNumber=" + request.getSession().getAttribute("orderNumber") + "&orderShop=E-Mack";
+            String projectUrl = "";
+            if (bankOption.equals("1")) {
+                projectUrl = "http://ip/projeto1/pagina?";
+            }
+            if (bankOption.equals("2")) {
+                projectUrl = "http://ip/projeto2/pagina?";
+            }
+            if (bankOption.equals("3")) {
+                projectUrl = "http://ip/projeto3/pagina?";
+            }
+            response.sendRedirect(projectUrl + urlParam);
         } catch (IOException ex) {
             Logger.getLogger(BancoDebito.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
     }
-    
-    
-    
-    
-    
 }
