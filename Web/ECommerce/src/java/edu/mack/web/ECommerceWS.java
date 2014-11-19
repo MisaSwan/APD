@@ -26,7 +26,7 @@ public class ECommerceWS {
           if("".equals(status))
             throw new Exception();
         
-        if(!status.equals("OK") || !status.equals("NOK")){
+        if(!status.equals("OK") && !status.equals("NOK")){
             status = "undefined";
         }
         

@@ -80,16 +80,7 @@
                             <img src="<%=product.getImage()%>"class="img-thumbnail">  
                             <h2><%=product.getName()%></h2>
                             <p><%=product.getDescription()%></p>
-                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>
-                        <div data-role="fieldcontain">
-                            <label for="select-choice-1" class="select">Choose shipping method:</label>
-                            <select name="select-choice-1" id="select-choice-1">
-                                <option value="standard">Standard: 7 day</option>
-                                <option value="rush">Rush: 3 days</option>
-                                <option value="express">Express: next day</option>
-                                <option value="overnight">Overnight</option>
-                            </select>
-                        </div>
+                            <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>                     
                         <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
                     </li>  
                     <%}%>
@@ -154,8 +145,15 @@
                         <div class="col-md-6">
                             <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'boleto\'/>');">Pagar com boleto</button></div>
                         <div class="col-md-6">
-
-                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/>')";>Pagar com débito</button>
+                        <div data-role="fieldcontain">
+                            <label for="select-choice-1" class="select">Choose shipping method:</label>
+                            <select name="bank_option" onselect="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/>')"" id="select-choice-1">
+                                <option value="1">Banco X</option>
+                                <option value="2">Banco Y</option>
+                                <option value="3">Banco Z</option>
+                                <option value="4">Banco A</option>
+                            </select>
+                        </div>                            
                         </div>
                     </form>
                 </div>

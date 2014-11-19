@@ -62,6 +62,7 @@ public class ComprarProdutosCommand implements Command {
         }        
         if (success) {
             MetodoPagamento method;
+            System.out.println(paymentMethod);
             if (paymentMethod.equals("boleto")) {                
                 method = new Boleto();                
             } else {

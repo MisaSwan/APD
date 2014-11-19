@@ -23,13 +23,13 @@ public class BancoDebito implements MetodoPagamento {
             String urlParam = "orderPrice=" + request.getSession().getAttribute("orderPrice") + "&orderNumber=" + request.getSession().getAttribute("orderNumber") + "&orderShop=E-Mack";
             String projectUrl = "";
             if (bankOption.equals("1")) {
-                projectUrl = "http://ip/projeto1/pagina?";
+                projectUrl = "http://www.google.com.br/projeto3/pagina?";
             }
             if (bankOption.equals("2")) {
-                projectUrl = "http://ip/projeto2/pagina?";
+                projectUrl = "http://www.google.com.br/projeto3/pagina?";
             }
             if (bankOption.equals("3")) {
-                projectUrl = "http://ip/projeto3/pagina?";
+                projectUrl = "http://www.google.com.br/projeto3/pagina?";
             }
             response.sendRedirect(projectUrl + urlParam);
         } catch (IOException ex) {

@@ -124,11 +124,20 @@
                         </div>           
                          <div class="col-md-12">
                              <input type="number" id="quantity" name="quantity" value="" placeholder="Quantidade"/></div>
-                        <div class="col-md-6">
-                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'boleto\'/>');">Pagar com boleto</button></div>
-                        <div class="col-md-6">
-                            <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit-2" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/>')";>Pagar com débito</button>
+                        
+                        <!--    <button class="ui-shadow ui-btn ui-corner-all" type="submit" data-mini="true" id="submit" onclick="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'boleto\'/>');">Pagar com boleto</button></div>-->
+                        <div class="col-md-12">
+                             <div data-role="fieldcontain">                            
+                            <select name="bank_option" data-theme="b" onChange="$(this).append('<input type=\'hidden\' name=\'paymentMethod\' value=\'debito\'/><input type=\'submit\' id=\'submit\'/>'); $('#submit').click()" id="select-choice-1">
+                               <option value="99">Escolha um banco para realizar o pagamento</option>
+                                <option value="1">Banco X</option>
+                                <option value="2">Banco Y</option>
+                                <option value="3">Banco Z</option>
+                                <option value="4">Banco A</option>
+                            </select>
+                        </div>  
                         </div>
+                         
                         </form>
                 </div>
             </div>
